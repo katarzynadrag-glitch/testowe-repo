@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Kalkulator</title>
+<style>
+  body { background: #241B2A; color: #A7A2A8; font: 20px monospace; display: grid; place-items: center; height: 100vh; margin: 0; }
+  input, select, button { font: inherit; background: #322736; color: #A7A2A8; border: 1px solid #d58ab3; border-radius: 6px; padding: 6px 10px; }
+  input { width: 6em; }
+  #wynik { color: #88d8b0; margin-top: 16px; text-align: center; }
+</style>
+</head>
+<body>
+<div>
+  <input id="a" type="number" value="2">
+  <select id="op"><option>+</option><option>-</option><option>*</option><option>/</option></select>
+  <input id="b" type="number" value="2">
+  <button onclick="licz()">=</button>
+  <div id="wynik"></div>
+</div>
+<script>
+function licz() {
+  const a = Number(document.getElementById('a').value);
+  const b = Number(document.getElementById('b').value);
+  const op = document.getElementById('op').value;
+  const w = { '+': a + b, '-': a - b, '*': a * b, '/': b === 0 ? 'nie dziel przez zero' : a / b }[op];
+  document.getElementById('wynik').textContent = w;
+}
+</script>
+</body>
+</html>
